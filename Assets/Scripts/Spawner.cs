@@ -12,6 +12,8 @@ public class Spawner : MonoBehaviour {
 
 	private Transform spawnedObj;
 
+	[SerializeField] private LayerMask objectsToAvoid;
+
 	// Start is called before the first frame update
 	void Start() {
 		SpawnObject();
@@ -21,15 +23,34 @@ public class Spawner : MonoBehaviour {
 	void Update() {
 		if (Input.GetKeyDown(KeyCode.H)) {
 			Destroy(spawnedObj.gameObject);
-			SpawnObject();
+			if (spawnedObj.GetComponent<Target>() == null) {
+				SpawnObject();
+			}
 		}
 	}
 
 	/// <summary>
-	/// Creates gameobjec and places it somewhere within a given bounds
+	/// Spawns target object and places it somewhere within a given bounds
 	/// </summary>
 	public void SpawnObject() {
+		Collider[] obstaclesHit;
+
 		spawnedObj = Instantiate(spawnObj, transform.parent);
-		spawnedObj.localPosition = new Vector3(Random.Range(-spawningBounds.x, spawningBounds.x), 1.5f, Random.Range(-spawningBounds.y, spawningBounds.y));
+		do {
+			spawnedObj.localPosition = new Vector3(Random.Range(-spawningBounds.x, spawningBounds.x), 1.5f, Random.Range(-spawningBounds.y, spawningBounds.y));
+
+			obstaclesHit = Physics.OverlapBox(spawnedObj.localPosition, spawnedObj.localScale, Quaternion.identity, objectsToAvoid);
+
+		} while (obstaclesHit.Length > 0);
+
+		Target target = spawnedObj.GetComponent<Target>();
+		if (target != null) {
+			spawnedObj.GetComponent<Target>().spawner = this;
+		}
 	}
+
+	//private void OnDrawGizmos() {
+	//	Gizmos.color = Color.cyan;
+	//	Gizmos.DrawCube(spawnedObj.position, spawnedObj.localScale);
+	//}
 }
