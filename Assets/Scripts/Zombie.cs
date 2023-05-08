@@ -6,23 +6,28 @@ using Unity.MLAgents.Sensors;
 using UnityEngine;
 
 public class Zombie : Agent {
+
 	#region Variables
+
+	[SerializeField] private string target;
 
 	[Header("Movement")]
 	[Tooltip("Force to apply when moving")]
-	public float moveForce = 15f;
+	[SerializeField] private float moveForce = 15f;
 
 	[Tooltip("Speed to rotate around Y-Axis")]
-	public float yawSpeed = 100f;
+	[SerializeField] private float yawSpeed = 100f;
 	private float smoothYawChange = 0f;
 
 	[Tooltip("Agent's camera")]
-	public Camera agentCam;
+	[SerializeField] private Camera agentCam;
 
 	[Header("Machine Learning")]
-	public bool trainingMode;
+	[SerializeField] private bool trainingMode;
 
 	private Rigidbody rb;
+
+	private Spawner spawner;
 
 	private bool isFrozen = false;
 
@@ -43,6 +48,7 @@ public class Zombie : Agent {
 	/// </summary>
 	public override void Initialize() {
 		rb = GetComponent<Rigidbody>();
+		spawner = GetComponentInParent<Spawner>();
 
 		// If not training mode, no max play, play forever
 		if (!trainingMode) {
@@ -54,8 +60,14 @@ public class Zombie : Agent {
 	/// Reset agent when a new agent starts
 	/// </summary>
 	public override void OnEpisodeBegin() {
+		if (trainingMode) {
+			spawner.ResetSpawn();
+		}
+
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
+
+		MoveToSafePosition();
 	}
 
 	/// <summary>
@@ -158,5 +170,37 @@ public class Zombie : Agent {
 		Debug.Assert(trainingMode == false, "Unfreeze not supported in training mode");
 		isFrozen = false;
 		rb.WakeUp();
+	}
+
+	private void MoveToSafePosition() {
+		bool isSafePositionFound = false;
+		int attemptsMade = 0;
+		Vector3 potentialPos = Vector3.zero;
+		Quaternion potentialRot = new Quaternion();
+
+		while (!isSafePositionFound && attemptsMade < 100) {
+			attemptsMade++;
+			potentialPos = new Vector3(Random.Range(-5f, 5f), transform.position.y, Random.Range(-5f, 5f));
+			potentialRot = Quaternion.Euler(0f, Random.Range(-180f, 180f), 0);
+
+			Collider[] colliders = Physics.OverlapSphere(potentialPos, transform.localScale.y / 2f);
+
+			isSafePositionFound = (colliders.Length == 0);
+		}
+
+		transform.localPosition = potentialPos;
+		transform.rotation = potentialRot;
+	}
+
+	private void OnCollisionEnter(Collision collision) {
+		if (trainingMode) {
+			if (collision.collider.CompareTag(target)) {
+				AddReward(0.5f);
+			}
+
+			if (collision.collider.CompareTag("Obstacles")) {
+				AddReward(-0.1f);
+			}
+		}
 	}
 }
