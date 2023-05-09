@@ -24,10 +24,12 @@ public class Spawner : MonoBehaviour {
 
 	// Start is called before the first frame update
 	void Start() {
-		SpawnTarget();
-
 		spawnedObstacles = new Transform[Random.Range(0, 10)];
 		SpawnObstacles();
+
+		target = Instantiate(targetObj, transform);
+		target.GetComponent<Target>().spawner = this;
+		SpawnTarget();
 	}
 
 	// Update is called once per frame
@@ -43,14 +45,14 @@ public class Spawner : MonoBehaviour {
 	private void SpawnTarget() {
 		Collider[] collidedObjects;
 
-		target = Instantiate(targetObj, transform);
+		//target = Instantiate(targetObj, transform);
 		do {
 			target.localPosition = new Vector3(Random.Range(-11f, 11f), 1.5f, Random.Range(-11f, 11f));
 			collidedObjects = Physics.OverlapBox(target.position, target.localScale * 1.25f, Quaternion.identity, objectsToAvoid);
 
 		} while (collidedObjects.Length > 0);
 
-		target.GetComponent<Target>().spawner = this;
+		//target.GetComponent<Target>().spawner = this;
 	}
 
 	private void SpawnObstacles() {
@@ -82,15 +84,12 @@ public class Spawner : MonoBehaviour {
 			}
 		}
 
-		if (target != null) {
-			Destroy(target.gameObject);
-			target = null;
-		}
-
-		SpawnTarget();
+		//SpawnTarget();
 
 		spawnedObstacles = new Transform[Random.Range(5, 10)];
 		SpawnObstacles();
+
+		SpawnTarget();
 	}
 
 	private void OnDrawGizmos() {

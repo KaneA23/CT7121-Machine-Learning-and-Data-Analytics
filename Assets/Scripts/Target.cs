@@ -18,7 +18,8 @@ public class Target : MonoBehaviour {
 	private void OnCollisionEnter(Collision collision) {
 		//Debug.Log(collision.gameObject.tag + collision.gameObject.name);
 		if (collision.gameObject.name == "Agent") {
-			Destroy(gameObject);
+			//Destroy(gameObject);
+			spawner.ResetSpawn();
 		}
 
 		if (collision.gameObject.CompareTag("Obstacles") || collision.gameObject.CompareTag("Wall")) {
@@ -33,7 +34,7 @@ public class Target : MonoBehaviour {
 		}
 	}
 
-	private void OnDestroy() {
-		spawner.ResetSpawn();
-	}
+	//private void OnDestroy() {
+	//	spawner.ResetSpawn();
+	//}
 }

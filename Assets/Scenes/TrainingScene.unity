@@ -5202,6 +5202,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1039788818}
     m_Modifications:
+    - target: {fileID: 355162680640572207, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: MaxStep
       value: 5000
