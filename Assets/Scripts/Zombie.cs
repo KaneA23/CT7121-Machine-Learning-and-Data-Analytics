@@ -207,7 +207,7 @@ public class Zombie : Agent
             potentialPos = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(-10f, 10f));
             potentialRot = Quaternion.Euler(0f, Random.Range(-180f, 180f), 0);
 
-            Collider[] colliders = Physics.OverlapSphere(potentialPos, transform.localScale.y / 2f);
+            Collider[] colliders = Physics.OverlapSphere(potentialPos, 3f);
 
             isSafePositionFound = (colliders.Length == 0);
         }

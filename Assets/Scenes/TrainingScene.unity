@@ -743,6 +743,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!1 &357243589
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +989,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!1 &500430403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1138,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!1 &526471335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1190,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!4 &558583394 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
@@ -3532,6 +3536,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!1 &1063675848
 GameObject:
   m_ObjectHideFlags: 0
@@ -3686,6 +3691,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!1001 &1132694483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3816,6 +3822,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!1 &1146696841
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,6 +5516,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 448
+  spawnedObstacles: []
 --- !u!1 &1904570230
 GameObject:
   m_ObjectHideFlags: 0

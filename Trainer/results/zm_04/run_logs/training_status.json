@@ -1,0 +1,56 @@
+{
+    "ZombAI": {
+        "checkpoints": [
+            {
+                "steps": 499968,
+                "file_path": "results\\zm_04\\ZombAI\\ZombAI-499968.onnx",
+                "reward": -0.13125000102445483,
+                "creation_time": 1683711129.8099244,
+                "auxillary_file_paths": [
+                    "results\\zm_04\\ZombAI\\ZombAI-499968.pt"
+                ]
+            },
+            {
+                "steps": 999896,
+                "file_path": "results\\zm_04\\ZombAI\\ZombAI-999896.onnx",
+                "reward": -0.20666666974623998,
+                "creation_time": 1683711643.561745,
+                "auxillary_file_paths": [
+                    "results\\zm_04\\ZombAI\\ZombAI-999896.pt"
+                ]
+            },
+            {
+                "steps": 1499960,
+                "file_path": "results\\zm_04\\ZombAI\\ZombAI-1499960.onnx",
+                "reward": -0.05000000074505806,
+                "creation_time": 1683712219.2532997,
+                "auxillary_file_paths": [
+                    "results\\zm_04\\ZombAI\\ZombAI-1499960.pt"
+                ]
+            },
+            {
+                "steps": 1553208,
+                "file_path": "results\\zm_04\\ZombAI\\ZombAI-1553208.onnx",
+                "reward": -0.0687500019557774,
+                "creation_time": 1683712335.6101727,
+                "auxillary_file_paths": [
+                    "results\\zm_04\\ZombAI\\ZombAI-1553208.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1553208,
+            "file_path": "results\\zm_04\\ZombAI.onnx",
+            "reward": -0.0687500019557774,
+            "creation_time": 1683712335.6101727,
+            "auxillary_file_paths": [
+                "results\\zm_04\\ZombAI\\ZombAI-1553208.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.0"
+    }
+}
