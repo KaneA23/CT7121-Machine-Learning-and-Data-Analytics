@@ -32,12 +32,15 @@ public class Zombie : Agent
 
     private bool isFrozen = false;
 
+    [SerializeField] private LayerMask objectsToAvoid;
+    Vector3 potentialPos;
+
     #endregion Variables
 
     // Start is called before the first frame update
     void Start()
     {
-
+        potentialPos = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -74,7 +77,14 @@ public class Zombie : Agent
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        MoveToSafePosition();
+        bool inFrontOfTarget = true;
+        if (trainingMode)
+        {
+            inFrontOfTarget = Random.value > 0.5f;
+        }
+
+        //MoveToSafePosition(inFrontOfTarget);
+        transform.localPosition = Vector3.zero;
     }
 
     /// <summary>
@@ -194,23 +204,72 @@ public class Zombie : Agent
         rb.WakeUp();
     }
 
-    private void MoveToSafePosition()
+    private void MoveToSafePosition(bool a_isInFrontOfTarget)
     {
         bool isSafePositionFound = false;
         int attemptsMade = 0;
-        Vector3 potentialPos = Vector3.zero;
+
         Quaternion potentialRot = new Quaternion();
+
+        Transform target = spawner.target;
+
+        if (a_isInFrontOfTarget)
+        {
+            float xDistanceFromTarget;
+            float zDistanceFromTarget;
+
+            if (Random.value > 0.5f)
+            {
+                xDistanceFromTarget = Random.Range(1f, 2f);
+            }
+            else
+            {
+                xDistanceFromTarget = Random.Range(-1f, -2f);
+            }
+
+            if (Random.value > 0.5f)
+            {
+                zDistanceFromTarget = Random.Range(1f, 2f);
+            }
+            else
+            {
+                zDistanceFromTarget = Random.Range(-1f, -2f);
+            }
+
+            potentialPos = target.position + (target.forward * xDistanceFromTarget) + (target.right * zDistanceFromTarget);
+            //Debug.Log(target.localPosition.ToString());
+            //Debug.Log(potentialPos.ToString());
+
+            if (potentialPos.x >= 11f || potentialPos.z >= 11f || potentialPos.x <= -11f || potentialPos.z <= -11f)
+            {
+                a_isInFrontOfTarget = false;
+                //Debug.Log("Out of bounds");
+            }
+        }
 
         while (!isSafePositionFound && attemptsMade < 100)
         {
             attemptsMade++;
-            potentialPos = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(-10f, 10f));
-            potentialRot = Quaternion.Euler(0f, Random.Range(-180f, 180f), 0);
 
-            Collider[] colliders = Physics.OverlapSphere(potentialPos, 3f);
+            if (a_isInFrontOfTarget)
+            {
+                Vector3 toTarget = target.localPosition - potentialPos;
+                potentialRot = Quaternion.LookRotation(toTarget, Vector3.up);
+            }
+            else
+            {
+                potentialPos = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(-10f, 10f));
+                potentialRot = Quaternion.Euler(0f, Random.Range(-180f, 180f), 0);
+            }
+
+            Collider[] colliders = Physics.OverlapSphere(potentialPos, 1f, objectsToAvoid);
 
             isSafePositionFound = (colliders.Length == 0);
+            //Debug.Log("Safe: " + isSafePositionFound.ToString());
         }
+
+        //Debug.Log("In front: " + a_isInFrontOfTarget.ToString());
+        potentialPos.y = 1f;
 
         transform.localPosition = potentialPos;
         transform.rotation = potentialRot;
@@ -225,9 +284,14 @@ public class Zombie : Agent
                 AddReward(1f);
             }
 
-            if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall"))
+            if (collision.collider.CompareTag("Obstacles"))
             {
                 AddReward(-0.1f);
+            }
+
+            if (collision.collider.CompareTag("Wall"))
+            {
+                AddReward(-0.25f);
             }
 
             if (collision.collider.name == "Ceiling")
@@ -250,5 +314,10 @@ public class Zombie : Agent
     private void OnCollisionEnterStay(Collision collision)
     {
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(potentialPos, 1f);
     }
 }

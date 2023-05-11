@@ -1,0 +1,29 @@
+{
+    "ZombAI": {
+        "checkpoints": [
+            {
+                "steps": 42048,
+                "file_path": "results\\zm_07\\ZombAI\\ZombAI-42048.onnx",
+                "reward": null,
+                "creation_time": 1683796681.0557525,
+                "auxillary_file_paths": [
+                    "results\\zm_07\\ZombAI\\ZombAI-42048.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 42048,
+            "file_path": "results\\zm_07\\ZombAI.onnx",
+            "reward": null,
+            "creation_time": 1683796681.0557525,
+            "auxillary_file_paths": [
+                "results\\zm_07\\ZombAI\\ZombAI-42048.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.0"
+    }
+}

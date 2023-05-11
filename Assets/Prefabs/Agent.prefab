@@ -227,6 +227,9 @@ MonoBehaviour:
   yawSpeed: 90
   agentCam: {fileID: 355162680640572200}
   trainingMode: 0
+  objectsToAvoid:
+    serializedVersion: 2
+    m_Bits: 896
 --- !u!114 &355162680921044621
 MonoBehaviour:
   m_ObjectHideFlags: 0
