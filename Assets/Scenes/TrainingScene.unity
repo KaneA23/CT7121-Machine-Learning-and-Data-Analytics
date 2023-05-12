@@ -518,18 +518,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 526471336}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: MaxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: trainingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -576,14 +564,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -744,7 +724,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!1 &357243589
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +970,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!1 &500430403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1119,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!1 &526471335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1171,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!4 &558583394 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
@@ -1402,18 +1378,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 520456179}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: MaxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: trainingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -1460,14 +1424,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2935,18 +2891,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 312820848}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: MaxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: trainingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -2995,14 +2939,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
@@ -3023,7 +2959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &913559290
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3541,7 +3477,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!1 &1063675848
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,7 +3632,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!1001 &1132694483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3706,18 +3640,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1135839746}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: MaxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: trainingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -3764,14 +3686,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3829,7 +3743,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!1 &1146696841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4232,18 +4145,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1881370107}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: MaxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: trainingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -4290,14 +4191,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4521,18 +4414,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 462842592}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: MaxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: trainingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -4579,14 +4460,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4896,18 +4769,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1112758061}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: MaxStep
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: trainingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -4954,14 +4815,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 355162680921044599, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5524,7 +5377,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   target: {fileID: 0}
-  spawnedObstacles: []
 --- !u!1 &1904570230
 GameObject:
   m_ObjectHideFlags: 0
@@ -6022,14 +5874,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1039788818}
     m_Modifications:
-    - target: {fileID: 355162680640572201, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680640572207, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: MaxStep
       value: 5000
@@ -6037,10 +5881,6 @@ PrefabInstance:
     - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: trainingMode
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044595, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_Constraints
-      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
@@ -6093,14 +5933,6 @@ PrefabInstance:
     - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorName
-      value: ZombAI
-      objectReference: {fileID: 0}
-    - target: {fileID: 355162680921044621, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: m_BehaviorType
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

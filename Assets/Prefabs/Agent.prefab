@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &355162680640572206
 Transform:
   m_ObjectHideFlags: 0
@@ -83,7 +83,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355162680640572207}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &355162680921044596
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,12 +221,13 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  target: Target
+  MaxStep: 5000
+  targetTag: Target
   moveForce: 10
   yawSpeed: 90
   agentCam: {fileID: 355162680640572200}
-  trainingMode: 0
+  trainingMode: 1
+  eyes: {fileID: 355162681172302515}
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 896
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 4
+    VectorObservationSize: 10
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 3
@@ -254,8 +255,8 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
-  m_BehaviorName: Zombie
+  m_BehaviorType: 0
+  m_BehaviorName: ZombAI
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1

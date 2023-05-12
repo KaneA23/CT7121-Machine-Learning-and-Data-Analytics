@@ -19,51 +19,44 @@ public class Spawner : MonoBehaviour
     [SerializeField] private LayerMask objectsToAvoid;
 
     [HideInInspector] public Transform target;
-    [SerializeField] private Transform[] spawnedObstacles;
 
     #endregion Variables
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //spawnedObstacles = new Transform[Random.Range(0, 10)];
-        //StartCoroutine(nameof(SpawnObstacles));//SpawnObstacles();
-
-        ///target = Instantiate(targetObj, transform);
-        ///target.localPosition = new Vector3(0f, 1.0f, 2f);
-        ///target.GetComponent<Target>().spawner = this;
-        //SpawnTarget();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        target = Instantiate(targetObj, transform);
+        target.GetComponent<Target>().spawner = this;
     }
 
     /// <summary>
     /// Spawns target object and places it somewhere within a given bounds
     /// </summary>
-
-
     private void SpawnTarget()
     {
-        Collider[] collidedObjects;
-
-        //target = Instantiate(targetObj, transform);
+        Vector3 spawnPoint;
+        Collider[] collisions;
         do
         {
-            target.localPosition = new Vector3(Random.Range(-11f, 11f), 1.5f, Random.Range(-11f, 11f));
-            collidedObjects = Physics.OverlapBox(target.localPosition, target.localScale * 1.25f, Quaternion.identity, objectsToAvoid);
+            float x = Random.Range(-7.5f, 7.5f);
+            float z = Random.Range(-7.5f, 7.5f);
 
-        } while (collidedObjects.Length > 0);
+            float tempX = x + transform.position.x;
+            float tempZ = z + transform.position.z;
+            spawnPoint = new Vector3(tempX, 1.5f, tempZ);
 
-        //target.GetComponent<Target>().spawner = this;
+            collisions = Physics.OverlapSphere(spawnPoint, 1.5f, objectsToAvoid.value);
+        } while (collisions.Length > 0);
+
+        target.position = spawnPoint;
     }
 
+    /// <summary>
+    /// Spawns in different sized obstacles and places them randomly around training areas
+    /// </summary>
     private void SpawnObstacles()
     {
+        // 0-5 obstacles can spawn at a time
         int count = Random.Range(0, 5);
         Transform spawnedObj;
 
@@ -71,6 +64,10 @@ public class Spawner : MonoBehaviour
         Collider[] collisions;
         for (int i = 0; i < count; i++)
         {
+            spawnedObj = Instantiate(obstacle, transform);
+            spawnedObj.localScale = new Vector3(Random.Range(1f, 5f), 3f, Random.Range(1f, 5f));
+
+            // Finds a place to spawn the object
             do
             {
                 float x = Random.Range(-10f, 10f);
@@ -84,56 +81,34 @@ public class Spawner : MonoBehaviour
             } while (collisions.Length > 0);
 
             spawnPoint = new Vector3(spawnPoint.x - transform.position.x, 1.5f, spawnPoint.z - transform.position.z);
-
-            spawnedObj = Instantiate(obstacle, transform);
             spawnedObj.localPosition = spawnPoint;
-            spawnedObj.localScale = new Vector3(Random.Range(1f, 5f), 3f, Random.Range(1f, 5f));
         }
     }
 
-    public void InitialSpawn()
-    {
-
-    }
-
+    /// <summary>
+    /// Removes any obstacles that exist and begins placing new obstacles and targets
+    /// </summary>
     public void ResetSpawn()
     {
-        if (target == null)
+        int children = transform.childCount;
+        for (int i = 0; i < children; i++)
         {
-            target = Instantiate(targetObj, transform);
-            target.localPosition = new Vector3(0f, 1.0f, 2f);
-            target.GetComponent<Target>().spawner = this;
-        }
-        else
-        {
-            int children = transform.childCount;
-            for (int i = 0; i < children; i++)
+            if (transform.GetChild(i).CompareTag("Obstacles"))
             {
-                if (transform.GetChild(i).CompareTag("Obstacles"))
-                {
-                    Destroy(transform.GetChild(i).gameObject);
-                }
-            }
-
-            SpawnObstacles();
-            SpawnTarget();
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (Application.isPlaying)
-        {
-            Gizmos.color = Color.red;
-
-            foreach (Transform obst in spawnedObstacles)
-            {
-                if (obst != null)
-                {
-                    //Gizmos.DrawWireCube(obst.position, obst.localScale * 1.25f);
-                    Gizmos.DrawWireSphere(obst.position, 3f);
-                }
+                Destroy(transform.GetChild(i).gameObject);
             }
         }
+
+        SpawnObstacles();
+        SpawnTarget();
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    if (Application.isPlaying)
+    //    {
+    //        Gizmos.color = Color.blue;
+    //        Gizmos.DrawWireSphere(target.position, 1.5f);
+    //    }
+    //}
 }

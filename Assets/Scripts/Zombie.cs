@@ -10,7 +10,7 @@ public class Zombie : Agent
 
     #region Variables
 
-    [SerializeField] private string target;
+    [SerializeField] private string targetTag;
 
     [Header("Movement")]
     [Tooltip("Force to apply when moving")]
@@ -26,10 +26,12 @@ public class Zombie : Agent
     [Header("Machine Learning")]
     [SerializeField] private bool trainingMode;
 
+    [SerializeField, Tooltip("Transform at agent's eyes")] private Transform eyes;
+
     private Rigidbody rb;
 
     private Spawner spawner;
-
+    private Transform target;
     private bool isFrozen = false;
 
     [SerializeField] private LayerMask objectsToAvoid;
@@ -38,15 +40,9 @@ public class Zombie : Agent
     #endregion Variables
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         potentialPos = Vector3.zero;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     /// <summary>
@@ -69,6 +65,7 @@ public class Zombie : Agent
     /// </summary>
     public override void OnEpisodeBegin()
     {
+        target = spawner.target;
         if (trainingMode)
         {
             spawner.ResetSpawn();
@@ -83,8 +80,7 @@ public class Zombie : Agent
             inFrontOfTarget = Random.value > 0.5f;
         }
 
-        //MoveToSafePosition(inFrontOfTarget);
-        transform.localPosition = Vector3.zero;
+        MoveToSafePosition(inFrontOfTarget);
     }
 
     /// <summary>
@@ -130,6 +126,19 @@ public class Zombie : Agent
     {
         // Observe the agent's local rotation (4 observations)
         sensor.AddObservation(transform.localRotation.normalized);
+
+        // Observe normalised vector pointing to the target (3 observations)
+        Vector3 toTarget = target.GetComponent<Target>().TargetCenterPosition - eyes.position;
+        sensor.AddObservation(toTarget.normalized);
+
+        sensor.AddObservation(Vector3.Dot(toTarget.normalized, -target.transform.position.normalized));
+
+
+        sensor.AddObservation(Vector3.Dot(eyes.forward.normalized, -target.transform.position.normalized));
+
+        sensor.AddObservation(toTarget.magnitude);
+
+        // 10 total observations
     }
 
     /// <summary>
@@ -204,6 +213,10 @@ public class Zombie : Agent
         rb.WakeUp();
     }
 
+    /// <summary>
+    /// Finds somewhere to spawn the player within training room bounds
+    /// </summary>
+    /// <param name="a_isInFrontOfTarget">Chance of being placed in front of target to increase change of collecting reward</param>
     private void MoveToSafePosition(bool a_isInFrontOfTarget)
     {
         bool isSafePositionFound = false;
@@ -211,87 +224,50 @@ public class Zombie : Agent
 
         Quaternion potentialRot = new Quaternion();
 
-        Transform target = spawner.target;
-
-        if (a_isInFrontOfTarget)
-        {
-            float xDistanceFromTarget;
-            float zDistanceFromTarget;
-
-            if (Random.value > 0.5f)
-            {
-                xDistanceFromTarget = Random.Range(1f, 2f);
-            }
-            else
-            {
-                xDistanceFromTarget = Random.Range(-1f, -2f);
-            }
-
-            if (Random.value > 0.5f)
-            {
-                zDistanceFromTarget = Random.Range(1f, 2f);
-            }
-            else
-            {
-                zDistanceFromTarget = Random.Range(-1f, -2f);
-            }
-
-            potentialPos = target.position + (target.forward * xDistanceFromTarget) + (target.right * zDistanceFromTarget);
-            //Debug.Log(target.localPosition.ToString());
-            //Debug.Log(potentialPos.ToString());
-
-            if (potentialPos.x >= 11f || potentialPos.z >= 11f || potentialPos.x <= -11f || potentialPos.z <= -11f)
-            {
-                a_isInFrontOfTarget = false;
-                //Debug.Log("Out of bounds");
-            }
-        }
-
         while (!isSafePositionFound && attemptsMade < 100)
         {
             attemptsMade++;
 
             if (a_isInFrontOfTarget)
             {
-                Vector3 toTarget = target.localPosition - potentialPos;
+                float distanceFromTarget = Random.Range(1.1f, 1.5f);
+                potentialPos = target.transform.position + (new Vector3(1, 0, 1) * distanceFromTarget);
+                Vector3 toTarget = target.GetComponent<Target>().TargetCenterPosition - potentialPos;
                 potentialRot = Quaternion.LookRotation(toTarget, Vector3.up);
             }
             else
             {
-                potentialPos = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(-10f, 10f));
-                potentialRot = Quaternion.Euler(0f, Random.Range(-180f, 180f), 0);
+                float radius = Random.Range(2f, 5f);
+
+                Quaternion direction = Quaternion.Euler(0f, Random.Range(-180f, 180f), 0);
+
+                potentialPos = spawner.transform.position + direction * Vector3.forward * radius;
+
+                float yaw = Random.Range(-180f, 180f);
+                potentialRot = Quaternion.Euler(0f, yaw, 0);
             }
 
             Collider[] colliders = Physics.OverlapSphere(potentialPos, 1f, objectsToAvoid);
-
             isSafePositionFound = (colliders.Length == 0);
-            //Debug.Log("Safe: " + isSafePositionFound.ToString());
         }
 
-        //Debug.Log("In front: " + a_isInFrontOfTarget.ToString());
         potentialPos.y = 1f;
-
-        transform.localPosition = potentialPos;
-        transform.rotation = potentialRot;
+        transform.SetPositionAndRotation(potentialPos, potentialRot);
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
         if (trainingMode)
         {
-            if (collision.collider.CompareTag(target))
+            if (collision.collider.CompareTag(targetTag))
             {
                 AddReward(1f);
             }
 
-            if (collision.collider.CompareTag("Obstacles"))
+            if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall"))
             {
                 AddReward(-0.1f);
-            }
-
-            if (collision.collider.CompareTag("Wall"))
-            {
-                AddReward(-0.25f);
             }
 
             if (collision.collider.name == "Ceiling")
@@ -313,7 +289,10 @@ public class Zombie : Agent
 
     private void OnCollisionEnterStay(Collision collision)
     {
-
+        //if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall"))
+        //{
+        //    AddReward(-5f / 1000f);
+        //}
     }
 
     private void OnDrawGizmos()
