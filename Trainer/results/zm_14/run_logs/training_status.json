@@ -1,0 +1,65 @@
+{
+    "ZombAI": {
+        "checkpoints": [
+            {
+                "steps": 3499968,
+                "file_path": "results\\zm_14\\ZombAI\\ZombAI-3499968.onnx",
+                "reward": 7.0,
+                "creation_time": 1684087226.4318233,
+                "auxillary_file_paths": [
+                    "results\\zm_14\\ZombAI\\ZombAI-3499968.pt"
+                ]
+            },
+            {
+                "steps": 3999896,
+                "file_path": "results\\zm_14\\ZombAI\\ZombAI-3999896.onnx",
+                "reward": 10.6,
+                "creation_time": 1684088297.1513107,
+                "auxillary_file_paths": [
+                    "results\\zm_14\\ZombAI\\ZombAI-3999896.pt"
+                ]
+            },
+            {
+                "steps": 4499968,
+                "file_path": "results\\zm_14\\ZombAI\\ZombAI-4499968.onnx",
+                "reward": 10.0,
+                "creation_time": 1684089380.7869735,
+                "auxillary_file_paths": [
+                    "results\\zm_14\\ZombAI\\ZombAI-4499968.pt"
+                ]
+            },
+            {
+                "steps": 4999896,
+                "file_path": "results\\zm_14\\ZombAI\\ZombAI-4999896.onnx",
+                "reward": 9.214285714285714,
+                "creation_time": 1684090684.0936842,
+                "auxillary_file_paths": [
+                    "results\\zm_14\\ZombAI\\ZombAI-4999896.pt"
+                ]
+            },
+            {
+                "steps": 5001024,
+                "file_path": "results\\zm_14\\ZombAI\\ZombAI-5001024.onnx",
+                "reward": 9.5,
+                "creation_time": 1684090685.975035,
+                "auxillary_file_paths": [
+                    "results\\zm_14\\ZombAI\\ZombAI-5001024.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5001024,
+            "file_path": "results\\zm_14\\ZombAI.onnx",
+            "reward": 9.5,
+            "creation_time": 1684090685.975035,
+            "auxillary_file_paths": [
+                "results\\zm_14\\ZombAI\\ZombAI-5001024.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.0"
+    }
+}
