@@ -1,0 +1,56 @@
+{
+    "ZombAI": {
+        "checkpoints": [
+            {
+                "steps": 999928,
+                "file_path": "results\\zm_17\\ZombAI\\ZombAI-999928.onnx",
+                "reward": 22.63750044128392,
+                "creation_time": 1684326103.3144028,
+                "auxillary_file_paths": [
+                    "results\\zm_17\\ZombAI\\ZombAI-999928.pt"
+                ]
+            },
+            {
+                "steps": 1499896,
+                "file_path": "results\\zm_17\\ZombAI\\ZombAI-1499896.onnx",
+                "reward": 26.950000399025157,
+                "creation_time": 1684327467.1970131,
+                "auxillary_file_paths": [
+                    "results\\zm_17\\ZombAI\\ZombAI-1499896.pt"
+                ]
+            },
+            {
+                "steps": 1999928,
+                "file_path": "results\\zm_17\\ZombAI\\ZombAI-1999928.onnx",
+                "reward": 43.512500571552664,
+                "creation_time": 1684328683.1006927,
+                "auxillary_file_paths": [
+                    "results\\zm_17\\ZombAI\\ZombAI-1999928.pt"
+                ]
+            },
+            {
+                "steps": 2499896,
+                "file_path": "results\\zm_17\\ZombAI\\ZombAI-2499896.onnx",
+                "reward": null,
+                "creation_time": 1684330086.6805592,
+                "auxillary_file_paths": [
+                    "results\\zm_17\\ZombAI\\ZombAI-2499896.pt"
+                ]
+            },
+            {
+                "steps": 2999928,
+                "file_path": "results\\zm_17\\ZombAI\\ZombAI-2999928.onnx",
+                "reward": 29.76250063177819,
+                "creation_time": 1684331172.280576,
+                "auxillary_file_paths": [
+                    "results\\zm_17\\ZombAI\\ZombAI-2999928.pt"
+                ]
+            }
+        ]
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.0"
+    }
+}

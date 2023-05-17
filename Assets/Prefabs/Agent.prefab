@@ -233,6 +233,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 896
+  sphereRadius: 1
 --- !u!114 &355162680921044621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +256,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 68a5ca25a5cdadc46980546f2eb7f15c, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: ab121057c638c744fafb4063ba70a944, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: ZombAI

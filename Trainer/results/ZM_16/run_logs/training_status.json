@@ -2,58 +2,58 @@
     "ZombAI": {
         "checkpoints": [
             {
-                "steps": 999896,
-                "file_path": "results\\ZM_16\\ZombAI\\ZombAI-999896.onnx",
-                "reward": 1.4,
-                "creation_time": 1684243713.4254744,
+                "steps": 2999896,
+                "file_path": "results\\zm_16\\ZombAI\\ZombAI-2999896.onnx",
+                "reward": 8.065217391304348,
+                "creation_time": 1684275692.8212492,
                 "auxillary_file_paths": [
-                    "results\\ZM_16\\ZombAI\\ZombAI-999896.pt"
+                    "results\\zm_16\\ZombAI\\ZombAI-2999896.pt"
                 ]
             },
             {
-                "steps": 1499968,
-                "file_path": "results\\ZM_16\\ZombAI\\ZombAI-1499968.onnx",
-                "reward": 1.0625,
-                "creation_time": 1684244298.9354482,
+                "steps": 3499968,
+                "file_path": "results\\zm_16\\ZombAI\\ZombAI-3499968.onnx",
+                "reward": 5.0,
+                "creation_time": 1684276801.7623477,
                 "auxillary_file_paths": [
-                    "results\\ZM_16\\ZombAI\\ZombAI-1499968.pt"
+                    "results\\zm_16\\ZombAI\\ZombAI-3499968.pt"
                 ]
             },
             {
-                "steps": 1999896,
-                "file_path": "results\\ZM_16\\ZombAI\\ZombAI-1999896.onnx",
-                "reward": -1.4285714285714286,
-                "creation_time": 1684244879.6651602,
+                "steps": 3999896,
+                "file_path": "results\\zm_16\\ZombAI\\ZombAI-3999896.onnx",
+                "reward": 9.233333333333333,
+                "creation_time": 1684277890.3243892,
                 "auxillary_file_paths": [
-                    "results\\ZM_16\\ZombAI\\ZombAI-1999896.pt"
+                    "results\\zm_16\\ZombAI\\ZombAI-3999896.pt"
                 ]
             },
             {
-                "steps": 2499968,
-                "file_path": "results\\ZM_16\\ZombAI\\ZombAI-2499968.onnx",
-                "reward": null,
-                "creation_time": 1684245490.0588908,
+                "steps": 4499968,
+                "file_path": "results\\zm_16\\ZombAI\\ZombAI-4499968.onnx",
+                "reward": 10.5,
+                "creation_time": 1684279008.19708,
                 "auxillary_file_paths": [
-                    "results\\ZM_16\\ZombAI\\ZombAI-2499968.pt"
+                    "results\\zm_16\\ZombAI\\ZombAI-4499968.pt"
                 ]
             },
             {
-                "steps": 2823168,
-                "file_path": "results\\ZM_16\\ZombAI\\ZombAI-2823168.onnx",
-                "reward": 4.5625,
-                "creation_time": 1684245955.2373645,
+                "steps": 4845120,
+                "file_path": "results\\zm_16\\ZombAI\\ZombAI-4845120.onnx",
+                "reward": 4.65625,
+                "creation_time": 1684279767.3307536,
                 "auxillary_file_paths": [
-                    "results\\ZM_16\\ZombAI\\ZombAI-2823168.pt"
+                    "results\\zm_16\\ZombAI\\ZombAI-4845120.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 2823168,
-            "file_path": "results\\ZM_16\\ZombAI.onnx",
-            "reward": 4.5625,
-            "creation_time": 1684245955.2373645,
+            "steps": 4845120,
+            "file_path": "results\\zm_16\\ZombAI.onnx",
+            "reward": 4.65625,
+            "creation_time": 1684279767.3307536,
             "auxillary_file_paths": [
-                "results\\ZM_16\\ZombAI\\ZombAI-2823168.pt"
+                "results\\zm_16\\ZombAI\\ZombAI-4845120.pt"
             ]
         }
     },

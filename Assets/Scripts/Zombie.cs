@@ -36,11 +36,26 @@ public class Zombie : Agent {
 	[SerializeField] private LayerMask objectsToAvoid;
 	Vector3 potentialPos;
 
+	[SerializeField] private float sphereRadius = 1f;
+	private RaycastHit hit;
+
 	#endregion Variables
 
 	// Start is called before the first frame update
 	private void Start() {
 		potentialPos = Vector3.zero;
+	}
+
+	private void Update() {
+		if (!trainingMode) {
+			return;
+		}
+
+		Collider[] hitObstacles = Physics.OverlapSphere(transform.position, sphereRadius, objectsToAvoid.value);
+		if (hitObstacles.Length > 0) {
+			Debug.Log("Obstacle hit");
+			AddReward(-5f / 1000f);
+		}
 	}
 
 	/// <summary>
@@ -266,5 +281,8 @@ public class Zombie : Agent {
 
 	private void OnDrawGizmos() {
 		Gizmos.DrawWireSphere(potentialPos, 1f);
+
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, sphereRadius);
 	}
 }
