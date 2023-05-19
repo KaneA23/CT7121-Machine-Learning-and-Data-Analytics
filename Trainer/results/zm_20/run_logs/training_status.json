@@ -1,0 +1,47 @@
+{
+    "ZombAI": {
+        "checkpoints": [
+            {
+                "steps": 499840,
+                "file_path": "results\\zm_20\\ZombAI\\ZombAI-499840.onnx",
+                "reward": -1.562499936670065,
+                "creation_time": 1684496896.6022394,
+                "auxillary_file_paths": [
+                    "results\\zm_20\\ZombAI\\ZombAI-499840.pt"
+                ]
+            },
+            {
+                "steps": 999768,
+                "file_path": "results\\zm_20\\ZombAI\\ZombAI-999768.onnx",
+                "reward": -1.4333332697550456,
+                "creation_time": 1684497528.837366,
+                "auxillary_file_paths": [
+                    "results\\zm_20\\ZombAI\\ZombAI-999768.pt"
+                ]
+            },
+            {
+                "steps": 1396096,
+                "file_path": "results\\zm_20\\ZombAI\\ZombAI-1396096.onnx",
+                "reward": -1.5624999105930328,
+                "creation_time": 1684498037.4432054,
+                "auxillary_file_paths": [
+                    "results\\zm_20\\ZombAI\\ZombAI-1396096.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1396096,
+            "file_path": "results\\zm_20\\ZombAI.onnx",
+            "reward": -1.5624999105930328,
+            "creation_time": 1684498037.4432054,
+            "auxillary_file_paths": [
+                "results\\zm_20\\ZombAI\\ZombAI-1396096.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.0"
+    }
+}

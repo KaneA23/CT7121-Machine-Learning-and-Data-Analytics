@@ -233,7 +233,7 @@ MonoBehaviour:
   objectsToAvoid:
     serializedVersion: 2
     m_Bits: 896
-  sphereRadius: 1
+  sphereRadius: 1.5
 --- !u!114 &355162680921044621
 MonoBehaviour:
   m_ObjectHideFlags: 0

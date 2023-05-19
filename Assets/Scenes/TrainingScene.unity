@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6935902029705869854, guid: 17aca69226c8fe642bcc9f0446eace68, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.4
+      value: -7.49
       objectReference: {fileID: 0}
     - target: {fileID: 6935902029705869854, guid: 17aca69226c8fe642bcc9f0446eace68, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3832,10 +3832,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1135839746}
     m_Modifications:
-    - target: {fileID: 355162680921044594, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
-      propertyPath: sphereRadius
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 355162680921044596, guid: 5aa3d9ebd20809b4fa585d3538176899, type: 3}
       propertyPath: m_Name
       value: Agent

@@ -88,7 +88,7 @@ public class Zombie : Agent {
 			inFrontOfTarget = Random.value > 0.5f;
 		}
 
-		//MoveToSafePosition(inFrontOfTarget);
+		MoveToSafePosition(inFrontOfTarget);
 	}
 
 	/// <summary>
