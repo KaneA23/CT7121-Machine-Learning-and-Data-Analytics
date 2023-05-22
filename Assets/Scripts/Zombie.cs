@@ -46,14 +46,13 @@ public class Zombie : Agent {
 		potentialPos = Vector3.zero;
 	}
 
-	private void Update() {
+	private void FixedUpdate() {
 		if (!trainingMode) {
 			return;
 		}
 
 		Collider[] hitObstacles = Physics.OverlapSphere(transform.position, sphereRadius, objectsToAvoid.value);
 		if (hitObstacles.Length > 0) {
-			Debug.Log("Obstacle hit");
 			AddReward(-5f / 1000f);
 		}
 	}
