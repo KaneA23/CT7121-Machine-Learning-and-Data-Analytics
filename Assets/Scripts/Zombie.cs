@@ -53,7 +53,7 @@ public class Zombie : Agent {
 
 		Collider[] hitObstacles = Physics.OverlapSphere(transform.position, sphereRadius, objectsToAvoid.value);
 		if (hitObstacles.Length > 0) {
-			AddReward(-1f / 1000f);
+			AddReward(-5f / 1000f);
 		}
 	}
 
