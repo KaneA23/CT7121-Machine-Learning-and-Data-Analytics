@@ -102,8 +102,8 @@ public class Spawner : MonoBehaviour {
 
 		//SpawnObstacles();
 
-		//SpawnTarget();
-		SpawnTargetOnOtherSide();
+		SpawnTarget();
+		//SpawnTargetOnOtherSide();
 	}
 
 	//private void OnDrawGizmos()

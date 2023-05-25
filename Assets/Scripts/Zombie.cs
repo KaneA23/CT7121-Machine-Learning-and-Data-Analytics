@@ -39,11 +39,14 @@ public class Zombie : Agent {
 	[SerializeField] private float sphereRadius = 1f;
 	private RaycastHit hit;
 
+	private int layerMask = 1 << 8;
+
 	#endregion Variables
 
 	// Start is called before the first frame update
 	private void Start() {
 		potentialPos = Vector3.zero;
+		layerMask = ~layerMask;
 	}
 
 	private void FixedUpdate() {
@@ -53,7 +56,13 @@ public class Zombie : Agent {
 
 		Collider[] hitObstacles = Physics.OverlapSphere(transform.position, sphereRadius, objectsToAvoid.value);
 		if (hitObstacles.Length > 0) {
-			AddReward(-5f / 1000f);
+			AddReward(-1f / 1000f);
+		}
+
+		Physics.Raycast(eyes.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask);
+		Debug.DrawRay(eyes.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
+		if (hit.collider.gameObject.CompareTag(targetTag)) {
+			AddReward(5f / 1000f);
 		}
 	}
 
@@ -84,7 +93,7 @@ public class Zombie : Agent {
 
 		bool inFrontOfTarget = true;
 		if (trainingMode) {
-			inFrontOfTarget = Random.value > 0.5f;
+			inFrontOfTarget = Random.value >= 0.5f;
 		}
 
 		MoveToSafePosition(inFrontOfTarget);
@@ -135,9 +144,12 @@ public class Zombie : Agent {
 		Vector3 toTarget = target.GetComponent<Target>().TargetCenterPosition - eyes.position;
 		sensor.AddObservation(toTarget.normalized);
 
+		// Indicates whether eyes in front of target (+1 is eyes directly in front)
 		sensor.AddObservation(Vector3.Dot(toTarget.normalized, -target.transform.position.normalized));
 
-		sensor.AddObservation(Vector3.Dot(eyes.forward.normalized, -target.transform.position.normalized));
+		// Indicates whether eyes pointing towards target (+1 is pointing directly at target, -1 directly away)
+		float lookingBonus = Vector3.Dot(eyes.forward.normalized, -target.transform.position.normalized);
+		sensor.AddObservation(lookingBonus);
 
 		sensor.AddObservation(toTarget.magnitude);  // distance to target
 
@@ -248,14 +260,14 @@ public class Zombie : Agent {
 	private void OnCollisionEnter(Collision collision) {
 		if (trainingMode) {
 			if (collision.collider.CompareTag(targetTag)) {
-				AddReward(1f);
+				AddReward(5f);
 			}
 
 			if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall")) {
 				AddReward(-0.5f);
 			}
 
-			OnCollisionEnterStay(collision);
+			//OnCollisionEnterStay(collision);
 		}
 	}
 
@@ -279,9 +291,13 @@ public class Zombie : Agent {
 	//}
 
 	private void OnDrawGizmos() {
-		Gizmos.DrawWireSphere(potentialPos, 1f);
+		//Gizmos.DrawWireSphere(potentialPos, 1f);
 
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.position, sphereRadius);
+
+		//Gizmos.color = Color.cyan;
+		//Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+		//Gizmos.DrawRay(eyes.position, eyes.forward * 5f);
 	}
 }
