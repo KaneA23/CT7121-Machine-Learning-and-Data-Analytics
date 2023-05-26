@@ -62,7 +62,7 @@ public class Zombie : Agent {
 		Physics.Raycast(eyes.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask);
 		Debug.DrawRay(eyes.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.cyan);
 		if (hit.collider.gameObject.CompareTag(targetTag)) {
-			AddReward(5f / 1000f);
+			AddReward((10f / 1000f) - (hit.distance / 1000f));
 		}
 	}
 
@@ -260,11 +260,16 @@ public class Zombie : Agent {
 	private void OnCollisionEnter(Collision collision) {
 		if (trainingMode) {
 			if (collision.collider.CompareTag(targetTag)) {
+				if (hit.collider.gameObject.CompareTag(targetTag)) {
+					// Gives bonus reward if looking at target when collecting
+					AddReward(1f);
+				}
+
 				AddReward(5f);
 			}
 
 			if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall")) {
-				AddReward(-0.5f);
+				AddReward(-5f);
 			}
 
 			//OnCollisionEnterStay(collision);
