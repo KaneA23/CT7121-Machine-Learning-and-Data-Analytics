@@ -70,7 +70,7 @@ public class Spawner : MonoBehaviour {
 		Collider[] collisions;
 		for (int i = 0; i < count; i++) {
 			spawnedObj = Instantiate(obstacle, transform);
-			spawnedObj.localScale = new Vector3(Random.Range(1f, 5f), 3f, Random.Range(1f, 5f));
+			spawnedObj.localScale = new Vector3(Random.Range(1f, 5f), 3f, Random.Range(1f, 5f));    // max size: 5f
 
 			// Finds a place to spawn the object
 			do {
@@ -94,13 +94,13 @@ public class Spawner : MonoBehaviour {
 	/// </summary>
 	public void ResetSpawn() {
 		int children = transform.childCount;
-		//for (int i = 0; i < children; i++) {
-		//	if (transform.GetChild(i).CompareTag("Obstacles")) {
-		//		Destroy(transform.GetChild(i).gameObject);
-		//	}
-		//}
+		for (int i = 0; i < children; i++) {
+			if (transform.GetChild(i).CompareTag("Obstacles")) {
+				Destroy(transform.GetChild(i).gameObject);
+			}
+		}
 
-		//SpawnObstacles();
+		SpawnObstacles();
 
 		SpawnTarget();
 		//SpawnTargetOnOtherSide();

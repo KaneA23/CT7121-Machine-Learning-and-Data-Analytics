@@ -265,11 +265,11 @@ public class Zombie : Agent {
 					AddReward(1f);
 				}
 
-				AddReward(5f);
+				AddReward(10f);
 			}
 
 			if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall")) {
-				AddReward(-5f);
+				AddReward(-10f);
 			}
 
 			//OnCollisionEnterStay(collision);
@@ -283,10 +283,9 @@ public class Zombie : Agent {
 	}
 
 	private void OnCollisionEnterStay(Collision collision) {
-		//if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall"))
-		//{
-		//    AddReward(-5f / 1000f);
-		//}
+		if (collision.collider.CompareTag("Obstacles") || collision.collider.CompareTag("Wall")) {
+			AddReward(-1f / 1000f);
+		}
 	}
 
 	//private void OnCollisionExit(Collision collision) {
