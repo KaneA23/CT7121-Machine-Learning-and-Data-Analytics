@@ -63,7 +63,7 @@ public class Spawner : MonoBehaviour {
 	/// </summary>
 	private void SpawnObstacles() {
 		// 0-5 obstacles can spawn at a time
-		int count = Random.Range(0, 5);
+		int count = 1;//Random.Range(0, 5);
 		Transform spawnedObj;
 
 		Vector3 spawnPoint;

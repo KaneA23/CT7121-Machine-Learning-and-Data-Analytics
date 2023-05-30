@@ -297,8 +297,8 @@ public class Zombie : Agent {
 	private void OnDrawGizmos() {
 		//Gizmos.DrawWireSphere(potentialPos, 1f);
 
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, sphereRadius);
+		//Gizmos.color = Color.yellow;
+		//Gizmos.DrawWireSphere(transform.position, sphereRadius);
 
 		//Gizmos.color = Color.cyan;
 		//Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
